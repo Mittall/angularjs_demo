@@ -1,0 +1,27 @@
+root = global ? window
+angular = root.angular
+
+thisApp = angular.module("AngularjsDemoClient", ['ngCookies', 'stocks']).config(['$routeProvider', '$locationProvider' , 
+($routeProvider, $locationProvider) ->
+  #$locationProvider.hashPrefix('');
+  $locationProvider.html5Mode true
+  $routeProvider.when("/",
+    controller: "WelcomeCtrl"
+    templateUrl: "<%= asset_path('welcome/index.html') %>"
+  ).when("/stocks", 
+    controller: StocksIndexCtrl
+    templateUrl: '<%= asset_path("stocks/index.html") %>'
+  ).when("/stocks/new",
+    controller: StocksCreateCtrl
+    templateUrl: '<%= asset_path("stocks/new.html") %>'
+  ).when("/stocks/:id",
+    controller: StocksShowCtrl
+    templateUrl: '<%= asset_path("stocks/show.html") %>'
+  ).when("/stocks/:id/edit",
+    controller: StocksEditCtrl
+    templateUrl: '<%= asset_path("stocks/edit.html") %>'
+  ).otherwise redirectTo: "/"
+])
+
+root.thisApp = thisApp
+

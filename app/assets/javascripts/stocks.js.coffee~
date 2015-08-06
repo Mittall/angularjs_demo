@@ -1,0 +1,7 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+
+@IndexCtrl = ($scope) ->
+  $scope.data = 
+    posts: [{symbol: 'First post', name: 'My first post about image uploading using paperclip.'}, {symbol: 'Second post', name: 'My second post about multiple image uploading.'}]

@@ -1,0 +1,22 @@
+class StocksController < ApplicationController
+	respond_to :json
+	before_filter :stock_params
+	
+	def index
+		respond_with Stock.all
+	end
+
+	def create
+    respond_with Stock.create(stock_params)
+  end
+
+	def destroy
+   respond_with Stock.destroy(params[:id])
+  end
+
+	private
+    def stock_params
+      params.require(:stock).permit(:symbol, :name)
+    end
+	
+end
